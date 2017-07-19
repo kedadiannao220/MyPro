@@ -1,4 +1,4 @@
-package com.pgy.jvm;
+package com.pgy.jvm.jvmOptions;
 
 import java.util.ArrayList;
 import java.util.List;

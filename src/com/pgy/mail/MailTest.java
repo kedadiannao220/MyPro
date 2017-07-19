@@ -23,23 +23,19 @@ public class MailTest {
         body.setSubject("Test");
         body.setText("hello");
 
-        //        MailUtil.sendMail(getEnterpriseQQMailBody(body));
-        //        MailUtil.sendMail(getQQMailBody(body));
-        //        MailUtil.sendMail(get163MailBody(body));
-        //        MailUtil.sendMail(getGmailBody(body));
+        MailUtil.sendMail(getHfBank(body));
 
         //        sendMail();
-        System.out.println(Boolean.toString(true));
 
     }
 
     private static void sendMail() {
         JavaMailSenderImpl jmsi = new JavaMailSenderImpl();
 
-        String host = "smtp.qq.com";
-        String port = "465";
-        String userName = "345681764@qq.com";
-        String password = "13598260325";
+        String host = "10.3.0.214";
+        String port = "25";
+        String userName = "testscyx";
+        String password = "password";
         String defaultEncoding = "UTF-8";
 
         jmsi.setUsername(userName);
@@ -62,8 +58,8 @@ public class MailTest {
         javaMailProperties.setProperty("mail.debug", "true");
         // 发送服务器需要身份验证
         javaMailProperties.setProperty("mail.smtp.auth", "true");
-        javaMailProperties
-                .setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        javaMailProperties.setProperty("mail.smtp.socketFactory.class",
+            "javax.net.ssl.SSLSocketFactory");
         javaMailProperties.setProperty("mail.smtp.socketFactory.fallback", "false");
         jmsi.setJavaMailProperties(javaMailProperties);
 
@@ -87,13 +83,12 @@ public class MailTest {
             vmMap.put("userName", "zhangsan");
             vmMap.put("password", "zhangsan1234");
 
-            String text = VelocityEngineUtils
-                    .mergeTemplateIntoString(getEngine(), "src/resource/MailTemplate.vm",
-                            defaultEncoding, vmMap);
+            String text = VelocityEngineUtils.mergeTemplateIntoString(getEngine(),
+                "src/resource/MailTemplate.vm", defaultEncoding, vmMap);
 
             helper.setText(text, true);
             helper.addInline("identifier1234",
-                    new File("/Users/admin/Pictures/beauty/jingxuan029.jpg"));
+                new File("/Users/admin/Pictures/beauty/jingxuan029.jpg"));
 
             jmsi.send(mimeMessage);
 
@@ -119,48 +114,18 @@ public class MailTest {
         return velocityEngine;
     }
 
-    private static MailBody getEnterpriseQQMailBody(MailBody body) {
-        String[] to = { "peng_gy@163.com" };
-        body.setFrom("pengganyu@idcos.com");
+    private static MailBody getHfBank(MailBody body) {
+        String[] to = { "testscyx1@hfbank.com.cn" };
+        body.setFrom("testscyx@hfbank.com.cn");
         body.setTo(to);
-        body.setPort(465);
-        body.setHost("smtp.qq.com");
-        body.setUsername("pengganyu@idcos.com");
-        body.setPassword("Yilin1992");
+        body.setPort(25);
+        body.setHost("10.1.35.144");
+//        body.setHost("10.3.0.214");
+//        body.setUsername("testscyx1");
+//        body.setPassword("password");
+        body.setUsername("dcosapp");
+        body.setPassword("yunjikeji2016");
         return body;
     }
 
-    private static MailBody getQQMailBody(MailBody body) {
-
-        String[] to = { "peng_gy@163.com" };
-        body.setFrom("345681764@qq.com");
-        body.setTo(to);
-        body.setPort(465);
-        body.setHost("smtp.qq.com");
-        body.setUsername("345681764@qq.com");
-        body.setPassword("13598260325");
-        return body;
-    }
-
-    private static MailBody get163MailBody(MailBody body) {
-        String[] to = { "345681764@qq.com" };
-        body.setFrom("peng_gy@163.com");
-        body.setTo(to);
-        body.setPort(465);
-        body.setHost("smtp.163.com");
-        body.setUsername("peng_gy@163.com");
-        body.setPassword("kedadiannao220");
-        return body;
-    }
-
-    private static MailBody getGmailBody(MailBody body) {
-        String[] to = { "peng_gy@163.com" };
-        body.setFrom("kedadiannao220@gmail.com");
-        body.setTo(to);
-        body.setPort(465);
-        body.setHost("smtp.gmail.com");
-        body.setUsername("kedadiannao220@gmail.com");
-        body.setPassword("Yilin1992");
-        return body;
-    }
 }

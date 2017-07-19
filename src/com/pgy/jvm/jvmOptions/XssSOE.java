@@ -1,4 +1,4 @@
-package com.pgy.jvm;
+package com.pgy.jvm.jvmOptions;
 
 /**
  * Xss参数测试OOM异常与SOE异常

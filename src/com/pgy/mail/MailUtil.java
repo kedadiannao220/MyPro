@@ -1,6 +1,5 @@
 package com.pgy.mail;
 
-import com.idcos.cloud.biz.common.check.FormChecker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -18,9 +17,9 @@ public class MailUtil {
     private static final String DEFAULT_ENCODING = "UTF-8";
 
     public static void sendMail(MailBody body) {
-        Logger.info("验证参数.....");
-        FormChecker.check(body);
-        Logger.info("开始发送短信.......");
+//        Logger.info("验证参数.....");
+//        FormChecker.check(body);
+//        Logger.info("开始发送短信.......");
         jmsi = getJavaMailSendImpl();
         setJavaMailProperties(body);
         setAuthenticator(body);
@@ -45,8 +44,8 @@ public class MailUtil {
         Properties javaMailProperties = new Properties();
 
         // 设置超时时间
-        javaMailProperties.setProperty("mail.connection.timeout", "2500");
-        javaMailProperties.setProperty("mail.socket.timeout", "2500");
+        javaMailProperties.setProperty("mail.connection.timeout", "250");
+        javaMailProperties.setProperty("mail.socket.timeout", "250");
 
         javaMailProperties.setProperty("mail.smtp.timeout", body.getTimeout());
         // 设置邮件服务器主机
@@ -57,8 +56,8 @@ public class MailUtil {
         javaMailProperties.setProperty("mail.debug", "true");
         // 发送服务器需要身份验证
         javaMailProperties.setProperty("mail.smtp.auth", "true");
-        javaMailProperties
-                .setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+//        javaMailProperties
+//                .setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         javaMailProperties.setProperty("mail.smtp.socketFactory.fallback", "false");
         jmsi.setJavaMailProperties(javaMailProperties);
     }
