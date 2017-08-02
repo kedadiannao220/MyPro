@@ -1,6 +1,7 @@
 package com.pgy.thread.sync;
 
 /**
+ * join可以使当前线程阻塞，直到运行结束后才执行下面的逻辑代码
  * Created by admin on 12/05/2017.
  */
 public class JoinTest {
@@ -9,7 +10,7 @@ public class JoinTest {
         ThreadJoin threadJoin = new ThreadJoin();
         threadJoin.setName("threadJoin");
         threadJoin.start();
-        //        threadJoin.join();
+        threadJoin.join();
         System.out.println("i want to echo this ");
 
     }

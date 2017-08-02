@@ -1,3 +1,3 @@
-- My project for java learing
+- My project for java learning
 - Java技术-- 学无止境
 - 没事的时候瞎折腾
