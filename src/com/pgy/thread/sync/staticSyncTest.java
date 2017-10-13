@@ -5,10 +5,11 @@ package com.pgy.thread.sync;
  */
 public class staticSyncTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ThreadA tha = new ThreadA();
         tha.setName("tha");
         tha.start();
+
 
         ThreadB thb = new ThreadB();
         thb.setName("thb");

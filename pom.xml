@@ -18,6 +18,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
 
+        <mysql.connector.version>5.1.34</mysql.connector.version>
+        <spring.data.mongodb.version>1.8.2.RELEASE</spring.data.mongodb.version>
+
+
         <idcos.common.base.version>1.0.0-SNAPSHOT</idcos.common.base.version>
         <idcos.common.component.version>1.0.0-20160517-SNAPSHOT</idcos.common.component.version>
         <idcos.common.service.version>1.0.0-SNAPSHOT</idcos.common.service.version>
@@ -25,6 +29,18 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.connector.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.eclipse.jgit</groupId>
             <artifactId>org.eclipse.jgit</artifactId>
@@ -87,11 +103,6 @@
             <version>3.0.0-milestone1</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring</artifactId>
-            <version>2.5.6</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
